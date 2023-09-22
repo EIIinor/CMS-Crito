@@ -1,0 +1,16 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContactPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "_Layout.cshtml";
+	ViewData["PageTitle"] = @Model.Value("pageTitle");
+	ViewData["PageDescription"] = @Model.Value("pageDescription");
+}
+
+<header>
+    <img class="background-lines" scr="~/static/background-effects/background-lines.svg" alt="">
+    
+    @await Html.PartialAsync("_NavSection")
+    @await Html.PartialAsync("_BreadcrumbSection")
+
+</header>

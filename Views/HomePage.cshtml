@@ -1,0 +1,43 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "_Layout.cshtml";
+	ViewData["PageTitle"] = @Model.Value("pageTitle");
+	ViewData["PageDescription"] = @Model.Value("pageDescription");
+}
+
+<header>
+    <img class="background-lines" scr="~/static/background-effects/background-lines.svg" alt="">
+    
+    @await Html.PartialAsync("_NavSection")
+    @await Html.PartialAsync("_ShowcaseSection")
+</header>
+
+<main>
+    @await Html.PartialAsync("_LabelsSection")
+  
+    <!-- features -->
+    <section class="features-section">
+        <div class="container">
+            <div class="feature-info">
+                <h4 class="title">@Model.Value("featuresSectionTitle")</h4>
+                <h2>@Model.Value("featuresHeadingTitle")</h2>
+                <a class="btn-theme" href="@Model.Value("featuresBtnUrl")">@Model.Value("featuresBtn") <i class="fa-solid fa-arrow-up-right"></i></a>
+            </div>
+            <div class="feature-boxes">
+                @Html.GetBlockListHtml(Model.FeaturesBoxes)
+            </div>
+        </div>
+    </section>
+  
+    @await Html.PartialAsync("_AboutSection")
+    
+    @await Html.PartialAsync("_OurServicesSection", Model)
+    
+    @await Html.PartialAsync("_ChooseUsSection")
+    @await Html.PartialAsync("_ProjectsSection")
+    @await Html.PartialAsync("_TeamSection")
+    @await Html.PartialAsync("_ArticleSliderSection")
+    @await Html.PartialAsync("_SubscribeSection")
+</main>
