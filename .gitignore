@@ -29,8 +29,8 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
-[Ll]og/
-[Ll]ogs/
+[Oo]ut/
+
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -65,6 +65,8 @@ artifacts/
 # Tye
 .tye/
 
+=======
+>>>>>>> 5a776c58decd94a29a777f174c53504d570fc79c
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 
@@ -362,6 +364,7 @@ MigrationBackup/
 .ionide/
 
 # Fody - auto-generated XML schema
+<<<<<<< HEAD
 FodyWeavers.xsd
 
 ##
@@ -477,3 +480,6 @@ appsettings-schema.*.json
 
 # Media files
 /wwwroot/media/
+=======
+FodyWeavers.xsd
+>>>>>>> 5a776c58decd94a29a777f174c53504d570fc79c
