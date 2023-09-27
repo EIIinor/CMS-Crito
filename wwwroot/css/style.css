@@ -957,20 +957,71 @@ header .showcase-section .container .breadcrumb {
 .company-info-section {
   margin-top: 60px;
   margin-bottom: 60px;
+}
+.company-info-section .container {
   display: flex;
   justify-content: center;
 }
-.company-info-section .info-box {
+.company-info-section .container .info-box {
   display: flex;
   border: 1px solid lightgray;
   margin-right: 30px;
   width: 300px;
+  padding: 40px;
+}
+.company-info-section .container .info-box > p {
+  margin-left: 10px;
   text-align: center;
 }
-.company-info-section .info-box > p {
-  flex: 1;
+.company-info-section .container .info-box > p > i {
+  background-color: black;
+  color: white;
+  padding: 14px;
+  font-size: 14px;
+  border-radius: 50%;
 }
-.company-info-section .info-box .company-info {
-  flex: 1;
-}/*# sourceMappingURL=style.css.map */
+.company-info-section .container .info-box .company-info {
+  margin-left: 20px;
+}
+.company-info-section .container .info-box .company-info h4 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.company-info-section .container .info-box .company-info p {
+  margin: 0;
+  font-size: 14px;
+}
+/* FORM */
+.form-section {
+  margin-bottom: 80px;
+}
+.form-section .container {
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: lightgray;
+}
+.form-section .container .form-title {
+  font-weight: 800;
+  font-size: 2rem;
+}
+.form-section .container .input-div {
+  margin-top: 15px;
+  border: none;
+}
+.form-section .container .input-div input {
+  border-radius: 25px;
+  border: none;
+  padding: 15px;
+  width: 70%;
+}
+.form-section .container .input-div .text {
+  height: 150px;
+}
+.form-section .container button {
+  border: none;
+  width: 70%;
+  margin-top: 30px;
+}
+/*# sourceMappingURL=style.css.map */
         

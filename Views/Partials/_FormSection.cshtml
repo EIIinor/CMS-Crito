@@ -3,9 +3,17 @@
 <section class="form-section">
     <div class="container">
         <h1 class="form-title">Leave us a message<br> for any information</h1>
-        <input class="name" type="text" placeholder="Name*">
-        <input class="email" type="email" placeholder="Email*">
-        <input class="text" type="text" placeholder="Your Message*">
-        <button class="btn-theme" type="submit">Send Message <i class="fa-regular fa-arrow-up-right"></i></button>
+        <form asp-controller="" asp-action="" method="post" noValidate>
+            <div class="input-div">
+                <input asp-for="" type="text" placeholder="Name*">
+            </div>
+            <div class="input-div">
+                <input asp-for="" type="email" placeholder="Email*">
+            </div>
+            <div class="input-div">
+                <input asp-for="" class="text" type="text" placeholder="Your Message*">
+            </div>          
+            <button type="submit" class="btn-theme" type="submit">Send Message <i class="fa-regular fa-arrow-up-right"></i></button>
+        </form>
     </div>
 </section>
