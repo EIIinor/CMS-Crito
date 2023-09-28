@@ -1,11 +1,29 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+﻿@using Crito.Models;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    var newsletterForm = new NewsletterForm();
+}
 
 <section class="subscribe-section">
     <div class="container">
-        <h1 class="title">Get News Updates By Signup</h1>
-        <div class="subsbribe">
-            <input class="subscribe-input" type="text" placeholder="username@domain.com">
-            <a class="btn-theme">Subscribe <i class="fa-regular fa-arrow-up-right"></i></a>
-        </div>
+        <h1 class="title">Get News Updates By Signup</h1>        
+
+            <div class="subsbribe">
+                @using (Html.BeginUmbracoForm("Index", "Subscribe", FormMethod.Post))
+                {
+                    <div asp-validation-summary="All"></div>
+
+                   @* @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                    }*@
+
+                    <input asp-for="@newsletterForm.Email" class="subscribe-input" type="email" placeholder="username@domain.com">
+                    <button type="submit" class="btn-theme">Subscribe <i class="fa-regular fa-arrow-up-right"></i></button>    
+                
+                }
+            </div>        
+            
     </div>     
 </section>
