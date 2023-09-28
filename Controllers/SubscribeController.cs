@@ -26,12 +26,16 @@ public class SubscribeController : SurfaceController
     public async Task<IActionResult> Index(NewsletterForm form)
     {
         if (!ModelState.IsValid)
+        {
+            // Återställ scrollpositionen innan du returnerar sidan
+            TempData["RestoreScrollPosition"] = true;
             return CurrentUmbracoPage();
+        }          
 
         await _subscribeService.AddSubscriberAsync(form);
         TempData["SuccessMessage"] = "Tack för att du prenumererar på vårt nyhetsbrev!";
+        TempData["RestoreScrollPosition"] = true;
         return LocalRedirect(form.RedirectUrl ?? "/");
- 
         
     }
 

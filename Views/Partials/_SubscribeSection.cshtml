@@ -14,12 +14,20 @@
                 {
                     <div asp-validation-summary="All"></div>
 
-                   @* @if (TempData["SuccessMessage"] != null)
+                   @if (TempData["SuccessMessage"] != null)
                     {
                         <div class="alert alert-success">@TempData["SuccessMessage"]</div>
-                    }*@
+                    }
 
-                    <input asp-for="@newsletterForm.Email" class="subscribe-input" type="email" placeholder="username@domain.com">
+                    @if (TempData["RestoreScrollPosition"] != null && (bool)TempData["RestoreScrollPosition"])
+                    {
+                        <script>
+                            restoreScrollPosition();
+                        </script>
+                        TempData["RestoreScrollPosition"] = false;
+                    }
+
+                    <input name="email" asp-for="@newsletterForm.Email" class="subscribe-input" type="email" placeholder="username@domain.com">
                     <button type="submit" class="btn-theme">Subscribe <i class="fa-regular fa-arrow-up-right"></i></button>    
                 
                 }
