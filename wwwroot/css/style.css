@@ -451,44 +451,51 @@ header .showcase-section .image-column {
 /* projects section */
 .projects-section .container {
   margin-top: 60px;
-  display: flex;
-  display: block;
   text-align: center;
   margin-bottom: 60px;
 }
+
 .projects-section .container .section-title {
   color: red;
   font-size: 12px;
 }
+
 .projects-section .container > h1 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 40px;
 }
+
 .projects-section .container .article-boxes {
   display: flex;
-  display: inline-block;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
+
 .projects-section .container .article-boxes .article-box {
-  display: flex;
-  display: inline-block;
-  width: 400px;
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+  box-sizing: border-box; /* Lägg till detta för att inkludera padding och border i bredden */
+  padding: 10px; /* Lägg till önskat mellanrum mellan article-boxes */
 }
+
 .projects-section .container .article-boxes .article-box > img {
-  width: 400px;
-  height: 200px;
+  max-width: 100%;
+  height: auto;
 }
+
 .projects-section .container .article-boxes .article-box .title {
   margin-top: 10px;
   font-size: 16px;
   border-bottom: 1px solid gray;
 }
+
 .projects-section .container .article-boxes .article-box > a {
   display: flex;
-  justify-content: right;
-  margin-bottom: 30px;
+  justify-content: flex-end;
+  margin-top: 20px;
 }
+
 
 /* team section */
 .team-section {
@@ -616,7 +623,7 @@ header .showcase-section .image-column {
 }
 .article-section .container .articles .article-card {
   position: relative;
-  width: 290px;
+  width: 350px;
 }
 .article-section .container .articles .article-card > img {
   width: 100%;
@@ -663,7 +670,7 @@ header .showcase-section .image-column {
   border-radius: 20px;
   border: none;
   height: 40px;
-  width: 200px;
+  width: 300px;
   text-align: center;
 }
 

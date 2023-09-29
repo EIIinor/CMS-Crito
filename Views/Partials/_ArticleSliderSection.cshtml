@@ -1,4 +1,26 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+﻿
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+
+    var itemsPerPage = 3;
+    var pageNumber = 1;
+
+    if (!int.TryParse(Context.Request.Query["page"], out pageNumber))
+        pageNumber = 1;
+
+    var selection = Umbraco.Content(Guid.Parse("581fc5b5-fc8e-4a9f-adad-a4094d7d7fef"))?
+        .ChildrenOfType("newsDetailsPage")?
+        .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.CreateDate).ToList();
+
+
+    var totalItems = selection?.Count() ?? 0;
+    var pagedItems = selection?.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage);
+
+    
+}
 
 <section class="article-section">
     <div class="container">
@@ -7,30 +29,58 @@
         <a class="btn-white">Brows Article <i class="fa-regular fa-arrow-up-right"></i></a>
         <div class="articles">
 
-            <div class="article-card">
-                <img src="images/linkedin-sales-solutions-Mis5fyJi7Q0-unsplash.jpg" alt="">
-                <p class="category">Business</p>
-                <h4 class="article-title">How To Use Digitalization In The Classroom</h4>
-                <p class="article-body">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                <p class="date">25 <br> Mar</p>
-            </div>
-
-            <div class="article-card">
-                <img src="images/emiliano-vittoriosi-vEN1bsdSjxM-unsplash.jpg" alt="">
-                <p class="category">Business</p>
-                <h4 class="article-title">How To Use Digitalization In The Classroom</h4>
-                <p class="article-body">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                <p class="date">25 <br> Mar</p>
-            </div>
-
-            <div class="article-card">
-                <img src="images/kobu-agency-ipARHaxETRk-unsplash.jpg" alt="">
-                <p class="category">Business</p>
-                <h4 class="article-title">How To Use Digitalization In The Classroom</h4>
-                <p class="article-body">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                <p class="date">25 <br> Mar</p>
-            </div>
-
+        @if(pagedItems != null)
+                {
+                    @foreach (var item in pagedItems!)
+                    {
+                        var url = item.Url();
+                        var date = item.CreateDate;
+                        var image = item.Value<IPublishedContent>("newsArticleImg");
+                        var category = item.Value("newsArticleCategory");
+                        var title = item.Name();
+                        var preamble = item.Value("newsArticlePreamble");
+    
+                        <a href="@url" class="article-card">
+                            <img src="@image?.Url()" alt="Article Image">
+                            <p class="category">@category</p>
+                            <h4 class="article-title">@title</h4>
+                            <p class="article-body">@preamble</p>
+                            <p class="date">@date.ToString("dd") <br> @date.ToString("MMM")</p>
+                        </a>
+                    }
+                }
         </div>
+            <nav class="pagination-section">
+                @if (pageNumber > 1)
+                {
+                    <a href="?page=@(pageNumber - 1)" class="item-link link-prev" aria-label="Previous">
+                        <span aria-hidden="true"><i class="fa-sharp fa-solid fa-chevron-light"></i></span>
+                    </a>
+                }
+
+                @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
+                {
+                    if (i == pageNumber)
+                    {
+                        <a href="#" class="item-link active">@i</a>
+                    } 
+                    else
+                    {
+                        <a href="?page=@i" class="item-link">@i</a>
+                    }
+                }
+                
+
+                @if (pageNumber < Math.Ceiling((decimal)totalItems / itemsPerPage))
+                {
+                    <a href="?page=@(pageNumber + 1)" class="item-link link-next" aria-label="Next">
+                        <span aria-hidden="true"><i class="fa-sharp fa-solid fa-chevron-light"></i></span>
+                    </a>
+                }
+            </nav>
     </div>
 </section>
+
+
+
+  

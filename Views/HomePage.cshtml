@@ -1,6 +1,7 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
 @{
 	Layout = "_Layout.cshtml";
 	ViewData["PageTitle"] = @Model.Value("pageTitle");
@@ -34,7 +35,24 @@
     @await Html.PartialAsync("_AboutSection")
     @await Html.PartialAsync("_OurServicesSection", Model)
     @await Html.PartialAsync("_ChooseUsSection")
-    @await Html.PartialAsync("_ProjectsSection")
+    
+    
+    
+    <section class="projects-section">
+        <div class="container">
+            <h4 class="section-title">@Model.Value("projectsAndStudiesSectionTitle")</h4>
+            <h1>@Model.Value("projectAndStudiesHeading")</h1>
+            <div class="article-boxes">
+                @Html.GetBlockListHtml(Model.ProjectsAndStudiesBoxes)
+            </div>
+            <div>
+                <a class="btn-dark" href="projects.html">All Recent Projects <i class="fa-light fa-arrow-up-right"></i></a>
+            </div>
+            
+        </div>
+    </section>
+    
+    
     @await Html.PartialAsync("_TeamSection")
     @await Html.PartialAsync("_ArticleSliderSection")
     @await Html.PartialAsync("_SubscribeSection")

@@ -10,7 +10,6 @@
     ViewData["PageTitle"] = @Model.Value("pageTitle");
 	ViewData["PageDescription"] = @Model.Value("pageDescription");
 	var userService = UserService;
-	//var image = Model.Value<IPublishedContent>("newsArticleImg");
 }
 
 <header>
@@ -22,6 +21,9 @@
 </header>
 
 <main>
+    @{
+        var image = Model.Value<IPublishedContent>("newsArticleImg");
+    }
     
     <section class="article-details-section">
         <div class="container">
@@ -34,7 +36,7 @@
                     <p><i class="fa-solid fa-circle"></i></p>
                     <p class="article-author">@Model.CreatorName(UserService)</p>
                 </div>
-                <img src="" alt="Article Image">
+                <img src="@image?.Url()" alt="Article Image">
                 <div class="article-body">
                     @Model.Value("newsArticleContent")
                 </div>
@@ -116,5 +118,8 @@
             </div>
         </div>
     </section>
+    
+    @await Html.PartialAsync("_ArticleSliderSection")
+    
     
 </main>

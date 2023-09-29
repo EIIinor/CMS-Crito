@@ -1,4 +1,24 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var itemsPerPage = 4;
+    var pageNumber = 1;
+
+    if (!int.TryParse(Context.Request.Query["page"], out pageNumber))
+        pageNumber = 1;
+
+    var selection = Umbraco.Content(Guid.Parse("581fc5b5-fc8e-4a9f-adad-a4094d7d7fef"))?
+        .ChildrenOfType("newsDetailsPage")?
+        .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.CreateDate).ToList();
+
+
+    var totalItems = selection?.Count() ?? 0;
+    var pagedItems = selection?.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage);
+
+    
+}
 
 <section class="team-section">
     <div class="container">
@@ -47,7 +67,7 @@
                         <p class="body">"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium libero, ad dignissimos velit qui, dolorum obcaecati cum saepe nesciunt nemo eligendi numquam voluptate"</p>
                         <div class="reviewer">
                             <div class="reviewer-img">
-                                <img src="images/christina-wocintechchat-com-PlikkWB79qs-unsplash.jpg" alt="">
+                                <img src="~/static/reviews/christina-wocintechchat-com-PlikkWB79qs-unsplash.jpg" alt="">
                             </div>
                             <div class="reviewer-body">
                                 <h3 class="review-name">Cassandra Warren</h3>
@@ -67,7 +87,7 @@
                         <p class="body">"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium libero, ad dignissimos velit qui, dolorum obcaecati cum saepe nesciunt nemo eligendi numquam voluptate"</p>
                         <div class="reviewer">
                             <div class="reviewer-img">
-                                <img src="images/christina-wocintechchat-com-PlikkWB79qs-unsplash.jpg" alt="">
+                                <img src="~/static/reviews/joseph-gonzalez-iFgRcqHznqg-unsplash.jpg" alt="">
                             </div>
                             <div class="reviewer-body">
                                 <h3 class="review-name">Cassandra Warren</h3>
@@ -87,7 +107,7 @@
                         <p class="body">"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium libero, ad dignissimos velit qui, dolorum obcaecati cum saepe nesciunt nemo eligendi numquam voluptate"</p>
                         <div class="reviewer">
                             <div class="reviewer-img">
-                                <img src="images/christina-wocintechchat-com-PlikkWB79qs-unsplash.jpg" alt="">
+                                <img src="~/static/reviews/vince-veras-AJIqZDAUD7A-unsplash.jpg" alt="">
                             </div>
                             <div class="reviewer-body">
                                 <h3 class="review-name">Cassandra Warren</h3>

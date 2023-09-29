@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\static\background-effects\" />
+    <Folder Include="wwwroot\static\reviews\" />
   </ItemGroup>
 
   <PropertyGroup>
