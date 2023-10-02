@@ -201,6 +201,22 @@ header .showcase-section .image-column {
   }
 }
 
+header .breadcrumb-section .container {
+    justify-content: center;
+    padding-bottom: 50px;
+}
+header .breadcrumb-section .container h2 {
+    font-size: 50px;
+    text-align: center;
+}
+header .breadcrumb-section .container .breadcrumb {
+    justify-content: center;
+    margin-top: 40px;
+}
+header .breadcrumb-section .container .breadcrumb > a {
+    margin-right: 15px;
+}
+
 /* body section starts here  */
 /* labels section */
 .labels-section .container {
@@ -811,18 +827,18 @@ header .showcase-section .container .breadcrumb {
 }
 .all-articles .container .articles {
   margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  
 }
 .all-articles .container .articles .article-card {
   position: relative;
-  width: 290px;
-  margin-right: 20px;
+  width: 420px;
 }
 .all-articles .container .articles .article-card > img {
-  width: 290px;
-  height: 150px;
+  width: 420px;
+  height: 230px;
 }
 .all-articles .container .articles .article-card .category {
   font-size: 12px;
@@ -846,6 +862,7 @@ header .showcase-section .container .breadcrumb {
 }
 .all-articles .container .pagination-section {
   margin-top: 30px;
+  text-align: center;
 }
 .all-articles .container .pagination-section .pagination {
   justify-content: center;
@@ -854,6 +871,19 @@ header .showcase-section .container .breadcrumb {
   border: none;
   color: black;
 }
+.all-articles .container .pagination-section .item-link.active {
+  border: none;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+.all-articles .container .pagination-section .item-link.active:hover {
+  border: none;
+  color: white;
+  background-color: black;
+}
+
+
 
 /* NEWS DETAILS */
 .article-details-section .container {
@@ -866,10 +896,12 @@ header .showcase-section .container .breadcrumb {
   flex: 1;
 }
 .article-details-section .container .article .article-title {
-  font-size: 2rem;
+  font-size: 45px;
+  width: 758px;
 }
 .article-details-section .container .article .article-info {
   display: flex;
+  margin-bottom: 30px;
 }
 .article-details-section .container .article .article-info > p {
   margin: 10px;
@@ -878,11 +910,13 @@ header .showcase-section .container .breadcrumb {
   color: rgba(219, 202, 54, 0.762);
 }
 .article-details-section .container .article > img {
-  width: 500px;
+  width: 758px;
+  height: 500px;
   margin-bottom: 30px;
 }
 .article-details-section .container .article .article-body {
-  width: 500px;
+    margin-top: 20px;
+  width: 758px;
 }
 .article-details-section .container .article .article-body .quote {
   margin-top: 30px;
@@ -893,72 +927,71 @@ header .showcase-section .container .breadcrumb {
   font-size: 20px;
   margin: 10px;
 }
-.article-details-section .container .article .categorys {
-  display: flex;
-}
-.article-details-section .container .article .categorys .category {
-  margin-right: 10px;
+.article-details-section .container .article .tags span {
   background-color: lightgray;
+  opacity: 90%;
   border-radius: 20px;
-  width: 90px;
-  text-align: center;
-  padding: 4px;
+  padding: 8px 14px;
   font-size: 12px;
 }
+
 .article-details-section .container .article-links {
-  justify-content: center;
   align-self: center;
+  width: 420px;
 }
 .article-details-section .container .article-links .article-search > input {
-  width: 300px;
+  width: 100%;
   background-color: lightgray;
   border: none;
   border-radius: 20px;
-  height: 40px;
+  padding: 13px;
   text-align: center;
 }
 .article-details-section .container .article-links .recent-posts {
-  width: 300px;
-  margin-top: 30px;
+  height: 554px;
+  margin-top: 40px;
   border: 1px solid lightgray;
   padding: 30px;
 }
 .article-details-section .container .article-links .recent-posts > h3 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
+  margin-bottom: 30px;
 }
 .article-details-section .container .article-links .recent-posts .post .post-title {
   font-weight: 700;
-  font-size: 12px;
+  font-size: 15px;
+  margin-top: 30px;
 }
 .article-details-section .container .article-links .recent-posts .post .post-date {
   padding-bottom: 10px;
-  font-size: 10px;
+  font-size: 13px;
   border-bottom: 1px solid lightgray;
 }
 .article-details-section .container .article-links .categories-links {
-  width: 300px;
   margin-top: 30px;
   border: 1px solid lightgray;
   padding: 30px;
 }
 .article-details-section .container .article-links .categories-links > h3 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .article-details-section .container .article-links .categories-links .category {
   display: flex;
+  text-align: center;
 }
 .article-details-section .container .article-links .categories-links .category .category-title {
   font-weight: 700;
+  font-size: 15px;
   margin-right: 10px;
-  font-size: 12px;
 }
 .article-details-section .container .article-links .categories-links .category .posts {
   margin-left: 10px;
-  font-size: 12px;
+  font-size: 15px;
   color: gray;
+  font-weight: 700;
 }
 
 /* article section */
