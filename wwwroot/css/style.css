@@ -38,11 +38,20 @@ a {
   padding: 10px;
 }
 
+.btn-white {
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+  padding: 15px 22px;
+  font-size: 16px;
+  border: 1px solid black;
+}
+
 .btn-arrow {
   background-color: black;
   color: white;
   border-radius: 50%;
-  padding: 5px;
+  padding: 13px;
   font-size: 18px;
 }
 
@@ -201,6 +210,7 @@ header .showcase-section .image-column {
 @media (min-width: 1200px) {
   .labels-section .container {
     display: flex;
+    justify-content: space-between;
   }
 }
 
@@ -227,7 +237,7 @@ header .showcase-section .image-column {
 }
 .features-section .container .feature-info > h2 {
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: 45px;
   margin-top: 10px;
   margin-bottom: 30px;
 }
@@ -255,7 +265,7 @@ header .showcase-section .image-column {
 
 .features-section .container .feature-boxes .feature-box {
   display: inline-block;
-  width: 190px;
+  width: 200px;
   margin: 10px;
 }
 .features-section .container .feature-boxes .feature-box > i {
@@ -287,21 +297,24 @@ header .showcase-section .image-column {
 }
 .about-section .container .img-column > img {
   width: 100%;
-  max-width: 400px;
-  height: 500px;
+  max-width: 533px;
+  height: 615px;
   object-fit: cover;
 }
 .about-section .container .img-column .img-info {
   background-color: rgb(224, 240, 246);
   padding: 20px;
   position: absolute;
-  left: 80px;
-  bottom: 60px;
-  width: 260px;
+  left: 20px;
+  bottom: 50px;
+  width: 368px;
+  height: 180px;
+  padding: 30px;
 }
 .about-section .container .img-column .img-info > h4 {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 500;
+  margin-bottom: 20px;
 }
 .about-section .container .img-column .img-info > h4 > span {
   color: red;
@@ -321,11 +334,11 @@ header .showcase-section .image-column {
 .about-section .container .about-column > h1 {
   margin-top: 20px;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 45px;
   margin-bottom: 20px;
 }
 .about-section .container .about-column > p {
-  font-size: 0.8rem;
+  font-size: 16px;
 }
 .about-section .container .about-column .about-links {
   margin-top: 80px;
@@ -352,6 +365,8 @@ header .showcase-section .image-column {
 .services-section .container {
   padding-top: 60px;
   padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
 }
 .services-section .container .title {
   color: red;
@@ -360,36 +375,44 @@ header .showcase-section .image-column {
 .services-section .container > h1 {
   font-weight: 600;
   width: 500px;
+  margin-bottom: 30px;
 }
 .services-section .container .service-boxes .umb-block-list {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 30px;
 }
 .services-section .container .service-boxes .umb-block-list .service-box {
     background-color: white;
     padding: 30px;
     transition: all 0.145s ease-in-out;
+    width: 308px;
+    height: 333px;
+    display: flex;
+    flex-direction: column;
 }
 .services-section .container .service-boxes .umb-block-list .service-box h4 {
     font-size: 22px;
+    margin-top: 10px;
 }
 .services-section .container .service-boxes .umb-block-list .service-box .description {
     font-size: 0.8rem;
+    margin-top: 5px;
 }
-.services-section .container .service-boxes .umb-block-list .service-box .btn-arrow {
-    justify-content: right;
-}
-.services-section .container > a {
-    margin-top: 30px;
+.services-section .container .service-boxes .umb-block-list .service-box .button {
+    text-align: right;
     display: inline-block;
-    justify-content: center;
+}
+.services-section .container .button {
+    margin-top: 50px;
+    display: inline-block;
     text-align: center;
 }
 
 /* choose us section */
 .choose-us-section {
   position: relative;
+  padding-bottom: 80px;
 }
 .choose-us-section .container {
   display: flex;
@@ -406,16 +429,19 @@ header .showcase-section .image-column {
 }
 .choose-us-section .container .info-column > h1 {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 40px;
+  width: 447px;
 }
 .choose-us-section .container .info-column .choose-us-boxes {
   margin-top: 30px;
+  
+
 }
 .choose-us-section .container .info-column .choose-us-boxes .box {
   display: flex;
+  margin-bottom: 20px;
 }
 .choose-us-section .container .info-column .choose-us-boxes .box .box-item > i {
-  border: 1px solid gray;
   border-radius: 50%;
   padding: 10px;
   font-size: 20px;
@@ -427,30 +453,31 @@ header .showcase-section .image-column {
   margin-left: 30px;
 }
 .choose-us-section .container .info-column .choose-us-boxes .box .box-info > h4 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
 }
 .choose-us-section .container .info-column .choose-us-boxes .box .box-info > p {
-  font-size: 9px;
+  font-size: 12px;
 }
 .choose-us-section .container .front-img {
   padding: 30px;
-  width: 450px;
-  height: 400px;
+  width: 645px;
+  height: 505px;
 }
 .choose-us-section .container .shadow {
   background-color: lightgrey;
-  width: 600px;
-  height: 250px;
+  opacity: 50%;
+  width: 1057px;
+  height: 425px;
   position: absolute;
   right: 0;
-  bottom: 50px;
+  top: 100px;
   z-index: -1;
 }
 
 /* projects section */
 .projects-section .container {
-  margin-top: 60px;
+  margin-top: 80px;
   text-align: center;
   margin-bottom: 60px;
 }
@@ -468,32 +495,37 @@ header .showcase-section .image-column {
 
 .projects-section .container .article-boxes {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  display: inline-block;
+  margin-bottom: 40px;
 }
 
 .projects-section .container .article-boxes .article-box {
-  width: calc(50% - 10px);
-  margin-bottom: 20px;
-  box-sizing: border-box; /* Lägg till detta för att inkludera padding och border i bredden */
-  padding: 10px; /* Lägg till önskat mellanrum mellan article-boxes */
+  display: inline-block;
+  padding: 10px;
+  gap: 20px;
+  width: 645px;
+  height: 455px;
 }
 
 .projects-section .container .article-boxes .article-box > img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 311px;
 }
 
 .projects-section .container .article-boxes .article-box .title {
+  display: flex;
+  justify-content: flex-start;
   margin-top: 10px;
   font-size: 16px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 13px;
 }
 
 .projects-section .container .article-boxes .article-box > a {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+  font-size: 14px;
 }
 
 
@@ -600,30 +632,31 @@ header .showcase-section .image-column {
   margin-bottom: 60px;
 }
 .article-section .container .title {
-  display: flex;
   display: block;
   color: red;
   font-size: 12px;
 }
-.article-section .container > h1 {
+.article-section .container .second-row {
   display: flex;
+  justify-content: space-between;
+}
+.article-section .container .second-row > h1 {
   display: inline-block;
   font-size: 2rem;
   font-weight: 700;
 }
-.article-section .container > a {
-  display: flex;
-  display: inline-block;
-  text-align: right;
+.article-section .container .second-row > a {
+  text-align: center;
 }
 .article-section .container .articles {
   margin-top: 20px;
+  gap: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
 .article-section .container .articles .article-card {
   position: relative;
-  width: 350px;
+  width: 420px;
 }
 .article-section .container .articles .article-card > img {
   width: 100%;
@@ -651,6 +684,23 @@ header .showcase-section .image-column {
   top: 10px;
   left: 10px;
 }
+.article-section .container .pagination-section {
+    text-align: center;
+    margin-top: 20px;
+}
+.article-section .container .pagination-section .item-link {
+    background-color: gray;
+    border-radius: 50%;
+    font-size: 1px;
+    padding: 6px;
+    margin-right: 10px;
+}
+.article-section .container .pagination-section .item-link.active {
+    background-color: black;
+}
+
+
+
 
 /* subscribe section */
 .subscribe-section {
@@ -661,17 +711,27 @@ header .showcase-section .image-column {
 .subscribe-section .container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  
 }
 .subscribe-section .container .title {
-  font-size: 2rem;
+  font-size: 40px;
   font-weight: 700;
+  text-align: center;
 }
-.subscribe-section .container .subsbribe .subscribe-input {
+.subscribe-section .container .subscribe {
+  align-items: center;
+  text-align: center;
+  align-self: center;
+}
+.subscribe-section .container .subscribe .subscribe-input {
   border-radius: 20px;
   border: none;
-  height: 40px;
-  width: 300px;
-  text-align: center;
+  height: 56px;
+  width: 308px;
+  text-align: left;
+  padding: 7px;
 }
 
 /* footer section */

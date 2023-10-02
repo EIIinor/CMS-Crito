@@ -25,8 +25,11 @@
 <section class="article-section">
     <div class="container">
         <h4 class="title">Article & News</h4>
-        <h1>Get Every Single Articles & News</h1>
-        <a class="btn-white">Brows Article <i class="fa-regular fa-arrow-up-right"></i></a>
+        <div class="second-row">
+            <h1>Get Every Single Articles & News</h1>
+            <a class="btn-white">Brows Article <i class="fa-regular fa-arrow-up-right"></i></a>
+        </div>
+        
         <div class="articles">
 
         @if(pagedItems != null)
@@ -50,37 +53,20 @@
                     }
                 }
         </div>
-            <nav class="pagination-section">
-                @if (pageNumber > 1)
-                {
-                    <a href="?page=@(pageNumber - 1)" class="item-link link-prev" aria-label="Previous">
-                        <span aria-hidden="true"><i class="fa-sharp fa-solid fa-chevron-light"></i></span>
-                    </a>
-                }
+        <nav class="pagination-section">
 
-                @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
+            @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
+            {
+                if (i == pageNumber)
                 {
-                    if (i == pageNumber)
-                    {
-                        <a href="#" class="item-link active">@i</a>
-                    } 
-                    else
-                    {
-                        <a href="?page=@i" class="item-link">@i</a>
-                    }
-                }
-                
-
-                @if (pageNumber < Math.Ceiling((decimal)totalItems / itemsPerPage))
+                    <a href="#" class="item-link active">@i</a>
+                } 
+                else
                 {
-                    <a href="?page=@(pageNumber + 1)" class="item-link link-next" aria-label="Next">
-                        <span aria-hidden="true"><i class="fa-sharp fa-solid fa-chevron-light"></i></span>
-                    </a>
+                    <a href="?page=@i" class="item-link">@i</a>
                 }
-            </nav>
+            }
+            
+        </nav>
     </div>
 </section>
-
-
-
-  

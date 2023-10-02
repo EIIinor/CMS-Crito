@@ -9,6 +9,8 @@
         <div class="service-boxes">
             @Html.GetBlockListHtml(Model.ServiceBoxes)
         </div>
-        <a class="btn-theme" href="@Model.Value("serviceSectionBtnUrl")">@Model.Value("serviceSectionBtnText")<i class="fa-solid fa-arrow-up-right"></i></a>
+        <div class="button">
+            <a class="btn-theme" href="@Model.Value("serviceSectionBtnUrl")">@Model.Value("serviceSectionBtnText")<i class="fa-solid fa-arrow-up-right"></i></a>
+        </div>
     </div>
 </section>
