@@ -5,25 +5,67 @@
     var contactForm = new ContactForm();
 }
 
+
 <section class="form-section">
     <div class="container">
         <h1 class="form-title">Leave us a message<br> for any information</h1>
 
-        @using (Html.BeginUmbracoForm("Index", "Contacts", FormMethod.Post))
+        @using (Html.BeginUmbracoForm("Index", "Contacts", FormMethod.Post, new { @id = "contactForm" }))
         {
             <div asp-validation-summary="All"></div>
 
             <div class="input-div">
-                <input asp-for="@contactForm.Name" type="text" placeholder="Name*">
+                <input id="nameInput" asp-for="@contactForm.Name" type="text" placeholder="Name*">
+                <span id="nameInput-error" class="error"></span>
             </div>
             <div class="input-div">
-                <input asp-for="@contactForm.Email" type="email" placeholder="Email*">
+                <input id="emailInput" asp-for="@contactForm.Email" type="email" placeholder="Email*" required>
+                <span id="emailInput-error" class="error"></span>
             </div>
             <div class="input-div">
-                <input asp-for="@contactForm.Message" class="text" type="text" placeholder="Your Message*">
+                <input id="messageInput" asp-for="@contactForm.Message" class="text" type="text" placeholder="Your Message*" required>
+                <span id="messageInput-error" class="error"></span>
             </div>
             <button type="submit" class="btn-theme">Send Message <i class="fa-regular fa-arrow-up-right"></i></button>
         }
-
     </div>
 </section>
+
+<script>
+    const nameInput = document.getElementById("nameInput");
+    const messageInput = document.getElementById("messageInput");
+
+    nameInput.addEventListener("keyup", function () {
+        validateName(this);
+    });
+
+    messageInput.addEventListener("keyup", function () {
+        validateMessage(this);
+    });
+
+    function validateName(inputElement) {
+        const value = inputElement.value.trim();
+        const errorSpan = document.getElementById("nameInput-error");
+
+        if (value.length < 3) {
+            errorSpan.innerText = "Name must be at least 3 letters.";
+            inputElement.classList.add("error");
+        } else {
+            errorSpan.innerText = "";
+            inputElement.classList.remove("error");
+        }
+    }
+
+    function validateMessage(inputElement) {
+        const value = inputElement.value.trim();
+        const errorSpan = document.getElementById("messageInput-error");
+
+        if (value.length < 5) {
+            errorSpan.innerText = "Message must be at least 5 characters.";
+            inputElement.classList.add("error");
+        } else {
+            errorSpan.innerText = "";
+            inputElement.classList.remove("error");
+        }
+    }
+</script>

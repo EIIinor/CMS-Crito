@@ -1,18 +1,17 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
     var itemsPerPage = 4;
     var pageNumber = 1;
 
     if (!int.TryParse(Context.Request.Query["page"], out pageNumber))
-        pageNumber = 1;
-
+       pageNumber = 1;
+       
     var selection = Umbraco.Content(Guid.Parse("581fc5b5-fc8e-4a9f-adad-a4094d7d7fef"))?
-        .ChildrenOfType("newsDetailsPage")?
-        .Where(x => x.IsVisible())
-        .OrderByDescending(x => x.CreateDate).ToList();
-
+    .ChildrenOfType("HomePage")?
+    .Where(x => x.IsVisible())
+    .OrderByDescending(x => x.CreateDate).ToList();
 
     var totalItems = selection?.Count() ?? 0;
     var pagedItems = selection?.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage);
@@ -24,32 +23,38 @@
     <div class="container">
         
         <div class="team">
-            <h4 class="team-title">Meet Our Team</h4>
-            <h1 class="second-title">Experience Team Members</h1>
-            <a class="btn-theme" href="">Browse Team <i class="fa-regular fa-arrow-up-right"></i></a>
+            <h4 class="team-title">@Model.Value("ourTeamSectionTitle")</h4>
+            <h1 class="second-title">@Model.Value("ourTeamHeadingTitle")</h1>
+            <a class="btn-theme" href="@Model.Value("ourTeamBtnUrl")">Browse Team <i class="fa-regular fa-arrow-up-right"></i></a>
+            
             <div class="team-members">
-                <div class="team-member">
-                    <img src="images/christina-wocintechchat-com-SJvDxw0azqw-unsplash.jpg" alt="">
-                    <h3 class="team-name">Kristine Palmer</h3>
-                    <h4 class="team-role">Chef Operation Officer</h4>
-                </div>
-                <div class="team-member">
-                    <img src="images/itay-verchik-6ZKGBzrDd3I-unsplash.jpg" alt="">
-                    <h3 class="team-name">Kristine Palmer</h3>
-                    <h4 class="team-role">Chef Operation Officer</h4>
-                </div>
-                <div class="team-member">
-                    <img src="images/christina-wocintechchat-com-Zpzf7TLj_gA-unsplash.jpg" alt="">
-                    <h3 class="team-name">Kristine Palmer</h3>
-                    <h4 class="team-role">Chef Operation Officer</h4>
-                </div>
-                <div class="team-member">
-                    <img src="images/the-connected-narrative-N8lRH2uxih4-unsplash.jpg" alt="">
-                    <h3 class="team-name">Kristine Palmer</h3>
-                    <h4 class="team-role">Chef Operation Officer</h4>
-                </div>
+                
+                @if(pagedItems != null)
+                {
+                   @foreach (var item in pagedItems)
+                    {
+                        @Html.GetBlockListHtml(Model.OurTeamMembers)
+                    }
+                }
+                
             </div>
+            <nav class="pagination-section">
+    
+                @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
+                {
+                    if (i == pageNumber)
+                    {
+                        <a href="#" class="item-link active">@i</a>
+                    } 
+                    else
+                    {
+                        <a href="?page=@i" class="item-link">@i</a>
+                    }
+                }
+            </nav>
         </div>
+        
+        
         
         <div class="testimonial">
                 <h4 class="testimonal-title">Testimonial</h4>

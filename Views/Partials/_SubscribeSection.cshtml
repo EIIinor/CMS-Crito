@@ -27,7 +27,8 @@
                         TempData["RestoreScrollPosition"] = false;
                     }
 
-                    <input name="email" asp-for="@newsletterForm.Email" class="subscribe-input" type="email" placeholder="username@domain.com">
+                    <input id="emailInput" name="email" asp-for="@newsletterForm.Email" class="subscribe-input" type="email" placeholder="username@domain.com" required>
+                    <span id="emailInput-error" class="error"></span>
                     <button type="submit" class="btn-theme">Subscribe <i class="fa-regular fa-arrow-up-right"></i></button>    
                 
                 }

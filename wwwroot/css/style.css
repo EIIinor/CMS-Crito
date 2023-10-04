@@ -1106,14 +1106,19 @@ header .showcase-section .container .breadcrumb {
   font-size: 2rem;
 }
 .form-section .container .input-div {
-  margin-top: 15px;
-  border: none;
+    margin-top: 15px;
+    border: none;
 }
 .form-section .container .input-div input {
-  border-radius: 25px;
-  border: none;
-  padding: 15px;
-  width: 70%;
+    border-radius: 25px;
+    border: none;
+    padding: 15px;
+    width: 70%;
+}
+.form-section .container .input-div span {
+    display: block;
+    color: red;
+    margin-top: 5px;
 }
 .form-section .container .input-div .text {
   height: 150px;
