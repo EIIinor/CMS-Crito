@@ -552,8 +552,6 @@ header .breadcrumb-section .container .breadcrumb > a {
 .team-section .container {
   padding-top: 60px;
   padding-bottom: 60px;
-  /* team */
-  /* testimonial */
 }
 .team-section .container .team .team-title {
   color: red;
@@ -570,23 +568,46 @@ header .breadcrumb-section .container .breadcrumb > a {
 .team-section .container .team .team-members {
   margin-top: 40px;
   margin-bottom: 100px;
-  display: flex;
-  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
 }
-.team-section .container .team .team-members .team-member {
-  width: 200px;
+.team-section .container .team .team-members .team-member-container {
+  display: flex; 
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap; /* Förhindra radbrytning */
 }
-.team-section .container .team .team-members .team-member > img {
-  width: 200px;
-  height: 250px;
+.team-section .container .team .team-members .team-member-container .team-member {
+  width: 308px;
+  height: 505px;
+  margin-right: 20px;
+  white-space: normal; /* Återställ radbrytning för innehållet */
 }
-.team-section .container .team .team-members .team-member .team-name {
+.team-section .container .team .team-members .team-member-container .team-member > img {
+    width: 308px;
+    height: 420px;
+    object-fit: cover;
+}
+.team-section .container .team .team-members .team-member-container .team-member .team-name {
   margin-top: 10px;
   font-size: 18px;
 }
-.team-section .container .team .team-members .team-member .team-role {
+.team-section .container .team .team-members .team-member-container .team-member .team-role {
   font-size: 12px;
   font-weight: 500;
+}
+.team-section .container .team .team-members .prev-button {
+    border: none;
+    border-radius: 50%;
+    color: white;
+    background-color: black;
+}
+.team-section .container .team .team-members .next-button {
+    border: none;
+    border-radius: 50%;
+    color: white;
+    background-color: black;
 }
 .team-section .container .testimonial {
   background-color: white;

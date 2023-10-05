@@ -1,3 +1,55 @@
+// team section slider 
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var container = document.querySelector('.team-member-container');
+    var itemsPerPage = 4;
+    var currentPage = 1;
+
+    // Funktion för att visa en sida med teammedlemmar
+    function showPage(page) {
+        var teamMembers = container.querySelectorAll('.team-member');
+        for (var i = 0; i < teamMembers.length; i++) {
+            teamMembers[i].style.display = 'none'; // Dölj alla teammedlemmar
+        }
+        var startIndex = (page - 1) * itemsPerPage;
+        var endIndex = startIndex + itemsPerPage;
+        for (var i = startIndex; i < endIndex; i++) {
+            if (teamMembers[i]) {
+                teamMembers[i].style.display = 'block'; // Visa sidans medlemmar
+            }
+        }
+    }
+
+    // Visa första sidan när sidan laddas
+    showPage(currentPage);
+
+    // Klickhändelser för nästa och föregående knappar
+    var nextButton = document.querySelector('.next-button');
+    var prevButton = document.querySelector('.prev-button');
+
+    nextButton.addEventListener("click", function() {
+        if (currentPage < Math.ceil(container.querySelectorAll('.team-member').length / itemsPerPage)) {
+            currentPage++;
+            showPage(currentPage);
+        }
+    });
+
+    prevButton.addEventListener("click", function() {
+        if (currentPage > 1) {
+            currentPage--;
+            showPage(currentPage);
+        }
+    });
+});
+
+
+
+
+
+
+
+
 // contact form validation
 const nameInput = document.getElementById("nameInput");
 const messageInput = document.getElementById("messageInput");

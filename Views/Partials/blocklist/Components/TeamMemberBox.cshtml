@@ -1,14 +1,16 @@
-﻿
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Cms.Core.Models.PublishedContent;
+
 @{
     var content = (ContentModels.TeamMemberBox)Model.Content;
     var image = content.Value<IPublishedContent>("teamMemberImg");
+    var teamMemberName = content.Value<string>("teamMemberName");
+    var teamMemberTitle = content.Value<string>("teamMemberTitle");
 }
 
 <div class="team-member">
     <img src="@image?.Url()" alt="">
-    <h3 class="team-name">@content.Value("teamMemberName")</h3>
-    <h4 class="team-role">@content.Value("teamMemberRole")</h4>
+    <h3 class="team-name">@teamMemberName</h3>
+    <h4 class="team-role">@teamMemberTitle</h4>
 </div>

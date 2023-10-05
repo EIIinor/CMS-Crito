@@ -1,22 +1,10 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
 @using Umbraco.Cms.Web.Common.PublishedModels;
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.Blocks;
+
 @{
-    var itemsPerPage = 4;
-    var pageNumber = 1;
 
-    if (!int.TryParse(Context.Request.Query["page"], out pageNumber))
-       pageNumber = 1;
-       
-    var selection = Umbraco.Content(Guid.Parse("581fc5b5-fc8e-4a9f-adad-a4094d7d7fef"))?
-    .ChildrenOfType("HomePage")?
-    .Where(x => x.IsVisible())
-    .OrderByDescending(x => x.CreateDate).ToList();
-
-    var totalItems = selection?.Count() ?? 0;
-    var pagedItems = selection?.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage);
-
-    
 }
 
 <section class="team-section">
@@ -27,33 +15,34 @@
             <h1 class="second-title">@Model.Value("ourTeamHeadingTitle")</h1>
             <a class="btn-theme" href="@Model.Value("ourTeamBtnUrl")">Browse Team <i class="fa-regular fa-arrow-up-right"></i></a>
             
+
             <div class="team-members">
-                
-                @if(pagedItems != null)
-                {
-                   @foreach (var item in pagedItems)
+                <div class="team-member-container">
+                    @foreach (var block in Model.OurTeamMembers)
                     {
-                        @Html.GetBlockListHtml(Model.OurTeamMembers)
+                        if (block is Umbraco.Cms.Core.Models.Blocks.BlockListItem blockListItem)
+                        {
+                            var content = blockListItem.Content as ContentModels.TeamMemberBox;
+                            if (content != null)
+                            {
+                                var teamMemberImg = content.Value<IPublishedContent>("teamMemberImg")?.Url();
+                                var teamMemberName = content.Value<string>("teamMemberName");
+                                var teamMemberTitle = content.Value<string>("teamMemberTitle");
+            
+                                <div class="team-member">
+                                    <img src="@teamMemberImg" alt="">
+                                    <h3 class="team-name">@teamMemberName</h3>
+                                    <h4 class="team-role">@teamMemberTitle</h4>
+                                </div>
+                            }
+                        }
                     }
-                }
-                
+                </div>
+                <button class="prev-button"><</button>
+                <button class="next-button">></button>
             </div>
-            <nav class="pagination-section">
-    
-                @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
-                {
-                    if (i == pageNumber)
-                    {
-                        <a href="#" class="item-link active">@i</a>
-                    } 
-                    else
-                    {
-                        <a href="?page=@i" class="item-link">@i</a>
-                    }
-                }
-            </nav>
+
         </div>
-        
         
         
         <div class="testimonial">
